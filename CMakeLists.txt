@@ -11,6 +11,9 @@ if(UNIX)
  #   set( CMAKE_CXX_FLAGS "-m32" ) # enable this if you want a 32 bit build
  #   set( CMAKE_EXE_LINKER_FLAGS "-m32" )
   endif()
+
+add_compile_options( -fPIC )
+
 endif()
 
 # Definitions for all libs
@@ -136,6 +139,8 @@ aux_source_directory(theoraplayer/src/YUV/libyuv/src THEORAPLAYER_SRC_DIR6)
    
 add_library (theoraplayer STATIC ${THEORAPLAYER_SRC_DIR1} ${THEORAPLAYER_SRC_DIR2} ${THEORAPLAYER_SRC_DIR3} ${THEORAPLAYER_SRC_DIR4} ${THEORAPLAYER_SRC_DIR5} ${THEORAPLAYER_SRC_DIR6})
 
+
+#[[
 # demos
 
 list(APPEND DEMO_BASECODE
@@ -174,3 +179,4 @@ target_link_libraries (glut_player ogg)
 target_link_libraries (glut_player pthread)
 target_link_libraries (glut_player ${OPENGL_LIBRARIES})
 target_link_libraries (glut_player ${GLUT_LIBRARIES})
+]]

@@ -3,3 +3,6 @@
 *.VC.db
 *.VC.VC.opendb
 *.vcxproj.user
+CMakeFiles/*
+Makefile
+*.a
