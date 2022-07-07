@@ -46,9 +46,17 @@
   <Import Condition="exists('..\..\..\hltypes\msvc\vs2015\props-generic\build-defaults.props')" Project="..\..\..\hltypes\msvc\vs2015\props-generic\build-defaults.props" />
   <Import Condition="!exists('..\..\..\hltypes\msvc\vs2015\props-generic\build-defaults.props')" Project="..\..\..\theora\msvc\vs2015\props-generic\build-defaults.props" />
   <Import Project="props\configuration.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugS|Win32'">
+    <TargetName>$(ProjectName)d_static</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseS|Win32'">
+    <TargetName>$(ProjectName)_static</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>LIBVORBISFILE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='ReleaseS|Win32'">MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='DebugS|Win32'">MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libvorbis.lib;%(AdditionalDependencies)</AdditionalDependencies>
